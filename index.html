@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimondo Adventures | Zanzibar Tours &amp; Mainland Safaris</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #1A1A1A;
+      line-height: 1.6;
+      box-sizing: border-box;
+    }
+
+    .page {
+      display: none;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Navigation */
+    .navbar {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #308231;
+      z-index: 1001;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: #308231;
+      margin: 4px 0;
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-book-btn {
+      background: #F7931E;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .nav-book-btn:hover {
+      background: #308231;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a {
+      color: #1A1A1A;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #308231;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: white;
+      min-width: 280px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      padding: 15px 0;
+      top: 100%;
+      left: 0;
+      margin-top: 10px;
+      z-index: 1002;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown.open .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 12px 25px;
+      color: #1A1A1A;
+      font-size: 15px;
+    }
+
+    .dropdown-content a:hover {
+      background: #F5E6CC;
+      color: #308231;
+    }
+
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      height: 650px;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(img/DOLPHIN_TOUR_MNEMBA_ATOLL/IMG_1728.JPG) center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      padding: 40px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero-tagline {
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .hero-value {
+      font-size: 18px;
+      margin-bottom: 35px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 16px 40px;
+      font-size: 17px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #308231;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #276a28;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #F7931E;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #e07d0a;
+      transform: translateY(-2px);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 80px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-alt {
+      background: #F5E6CC;
+    }
+
+    .section-title {
+      font-size: 42px;
+      color: #308231;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-size: 20px;
+      color: #1A1A1A;
+      margin-bottom: 60px;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Grid Layouts */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, #82c4e0 0%, #65b3d4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+    }
+
+    .card-content {
+      padding: 30px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      color: #308231;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .card-text {
+      font-size: 16px;
+      color: #1A1A1A;
+      line-height: 1.8;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+      margin-top: 60px;
+    }
+
+    .about-item h3 {
+      font-size: 26px;
+      color: #308231;
+      margin-bottom: 15px;
+    }
+
+    .about-item p {
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    /* Form Styles */
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 50px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1A1A1A;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #308231;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: #F7931E;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #e07d0a;
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Blog Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 45px;
+      margin-top: 50px;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, #308231 0%, #246625 100%);
+    }
+
+    .blog-content {
+      padding: 30px;
+    }
+
+    .blog-title {
+      font-size: 22px;
+      color: #1A1A1A;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .blog-excerpt {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      color: #F7931E;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+    }
+
+    .gallery-item {
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-beach {
+      background: linear-gradient(135deg, #82c4e0 0%, #65b3d4 100%);
+    }
+
+    .gallery-wildlife {
+      background: linear-gradient(135deg, #c89858 0%, #a67c52 100%);
+    }
+
+    .gallery-adventure {
+      background: linear-gradient(135deg, #F7931E 0%, #e07d0a 100%);
+    }
+
+    .gallery-aerial {
+      background: linear-gradient(135deg, #308231 0%, #246625 100%);
+    }
+
+    /* Footer */
+    .footer {
+      background: #1A1A1A;
+      color: white;
+      padding: 60px 40px 30px;
+      width: 100%;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #F7931E;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer-section a:hover {
+      color: #F7931E;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      background: transparent;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #308231;
+      text-decoration: none;
+      transition: transform 0.3s, color 0.3s, opacity 0.3s;
+    }
+
+    .social-icon:hover {
+      color: #F7931E;
+      transform: scale(1.15);
+      opacity: 0.8;
+    }
+
+    .social-icon-green {
+      color: #308231;
+    }
+
+    .social-icon-green:hover {
+      color: #246625;
+    }
+
+    .social-icon-white {
+      color: white;
+    }
+
+    .social-icon-white:hover {
+      color: #F7931E;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 25px;
+      text-align: center;
+      color: #999;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      margin-top: 15px;
+    }
+
+    .footer-links a {
+      color: #999;
+      margin: 0 15px;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: #F7931E;
+    }
+
+    /* Contact Info Section */
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+
+    .contact-item {
+      text-align: center;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .contact-item h3 {
+      font-size: 22px;
+      color: #308231;
+      margin-bottom: 15px;
+    }
+
+    .contact-item p {
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .contact-item a {
+      color: #F7931E;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* Success Message */
+    .success-message {
+      background: #308231;
+      color: white;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    /* About Page Styles */
+    .about-hero {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(rgba(48, 130, 49, 0.3), rgba(48, 130, 49, 0.5)), url(img/IMG_1651.JPG) center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(48, 130, 49, 0.2) 0%, transparent 100%);
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      max-width: 900px;
+      padding: 40px;
+    }
+
+    .about-hero-title {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .about-hero-subtitle {
+      font-size: 24px;
+      font-weight: 300;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    }
+
+    .about-hero-btn {
+      background: #F7931E;
+      color: white;
+      padding: 16px 45px;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(247, 147, 30, 0.3);
+    }
+
+    .about-hero-btn:hover {
+      background: #e07d0a;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(247, 147, 30, 0.4);
+    }
+
+    /* Intro Section */
+    .about-intro {
+      padding: 100px 40px;
+      background: white;
+    }
+
+    .about-intro-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-section-title {
+      font-size: 42px;
+      color: #308231;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    .about-intro-paragraph {
+      font-size: 18px;
+      line-height: 1.9;
+      color: #1A1A1A;
+      margin-bottom: 20px;
+    }
+
+    .about-intro-image-placeholder {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, #308231 0%, #6aa84f 100%);
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(48, 130, 49, 0.2);
+    }
+
+    /* Mission, Vision, Values */
+    .about-mvv {
+      padding: 100px 40px;
+      background: #F5E6CC;
+    }
+
+    .about-mvv-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+    }
+
+    .about-mvv-card {
+      background: white;
+      padding: 50px 35px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .about-mvv-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .about-mvv-icon {
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-mvv-title {
+      font-size: 26px;
+      color: #308231;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .about-mvv-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #1A1A1A;
+    }
+
+    /* Values Detail */
+    .about-values-detail {
+      padding: 100px 40px;
+      background: white;
+    }
+
+    .about-values-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .about-value-card {
+      background: white;
+      border: 2px solid #F5E6CC;
+      border-radius: 12px;
+      padding: 40px;
+      transition: all 0.3s;
+    }
+
+    .about-value-card:hover {
+      border-color: #308231;
+      box-shadow: 0 6px 25px rgba(48, 130, 49, 0.15);
+    }
+
+    .about-value-icon {
+      margin-bottom: 20px;
+    }
+
+    .about-value-title {
+      font-size: 22px;
+      color: #308231;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .about-value-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #1A1A1A;
+    }
+
+    /* Team Section */
+    .about-team {
+      padding: 100px 40px;
+      background: #F5E6CC;
+    }
+
+    .about-team-title {
+      font-size: 42px;
+      color: #308231;
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .about-team-subtitle {
+      font-size: 18px;
+      text-align: center;
+      color: #1A1A1A;
+      margin-bottom: 70px;
+    }
+
+    .about-team-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .about-team-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .about-team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    .about-team-photo {
+      margin-bottom: 25px;
+    }
+
+    .about-team-photo-placeholder {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #308231 0%, #6aa84f 100%);
+      box-shadow: 0 4px 15px rgba(48, 130, 49, 0.2);
+    }
+
+    .about-team-name {
+      font-size: 22px;
+      color: #1A1A1A;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .about-team-role {
+      font-size: 16px;
+      color: #F7931E;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .about-team-bio {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    /* Trust Section */
+    .about-trust {
+      padding: 100px 40px;
+      background: white;
+    }
+
+    .about-trust-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-trust-title {
+      font-size: 42px;
+      color: #308231;
+      text-align: center;
+      margin-bottom: 60px;
+      font-weight: 700;
+    }
+
+    .about-trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 70px;
+    }
+
+    .about-trust-item {
+      text-align: center;
+    }
+
+    .about-trust-number {
+      font-size: 56px;
+      font-weight: 700;
+      color: #F7931E;
+      margin-bottom: 10px;
+    }
+
+    .about-trust-label {
+      font-size: 16px;
+      color: #1A1A1A;
+      font-weight: 500;
+    }
+
+    .about-testimonial {
+      background: #F5E6CC;
+      padding: 50px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-testimonial-text {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #1A1A1A;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .about-testimonial-author {
+      font-size: 16px;
+      color: #308231;
+      font-weight: 600;
+    }
+
+    /* CTA Section */
+    .about-cta {
+      padding: 100px 40px;
+      background: linear-gradient(135deg, #308231 0%, #246625 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M50 0L0 50l50 50 50-50z" fill="rgba(255,255,255,0.03)"/></svg>');
+      opacity: 0.5;
+    }
+
+    .about-cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-cta-title {
+      font-size: 48px;
+      color: white;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .about-cta-text {
+      font-size: 20px;
+      color: white;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
+    .about-cta-btn {
+      background: #F7931E;
+      color: white;
+      padding: 18px 50px;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(247, 147, 30, 0.4);
+    }
+
+    .about-cta-btn:hover {
+      background: white;
+      color: #308231;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 968px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        height: 100%;
+        width: 300px;
+        background: white;
+        flex-direction: column;
+        padding: 80px 30px 30px;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        transition: right 0.3s ease-in-out;
+        gap: 0;
+        overflow-y: auto;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .nav-links > li > a {
+        display: block;
+        padding: 18px 0;
+        font-size: 18px;
+      }
+
+      .nav-book-btn {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        margin-top: 0;
+        background: #f9f9f9;
+        display: none;
+      }
+
+      .dropdown.active .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content a {
+        padding: 12px 20px;
+        font-size: 16px;
+      }
+
+      .dropdown > a::after {
+        content: ' ▾';
+        float: right;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero-tagline {
+        font-size: 20px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        padding: 30px 20px;
+      }
+
+      .nav-container {
+        padding: 15px 20px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      /* About Page Mobile */
+      .about-hero {
+        height: 300px;
+      }
+
+      .about-hero-title {
+        font-size: 40px;
+      }
+
+      .about-hero-subtitle {
+        font-size: 18px;
+      }
+
+      .about-intro {
+        padding: 60px 20px;
+      }
+
+      .about-intro-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-section-title {
+        font-size: 32px;
+      }
+
+      .about-intro-paragraph {
+        font-size: 16px;
+      }
+
+      .about-intro-image-placeholder {
+        height: 300px;
+      }
+
+      .about-mvv {
+        padding: 60px 20px;
+      }
+
+      .about-mvv-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-values-detail {
+        padding: 60px 20px;
+      }
+
+      .about-values-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-team {
+        padding: 60px 20px;
+      }
+
+      .about-team-title {
+        font-size: 32px;
+      }
+
+      .about-team-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-trust {
+        padding: 60px 20px;
+      }
+
+      .about-trust-title {
+        font-size: 32px;
+      }
+
+      .about-trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .about-trust-number {
+        font-size: 42px;
+      }
+
+      .about-testimonial {
+        padding: 30px 25px;
+      }
+
+      .about-testimonial-text {
+        font-size: 17px;
+      }
+
+      .about-cta {
+        padding: 60px 20px;
+      }
+
+      .about-cta-title {
+        font-size: 32px;
+      }
+
+      .about-cta-text {
+        font-size: 17px;
+      }
+    }
+  </style>
+  <!--<style>@view-transition { navigation: auto; }</style>>-->
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+
+ <body>
+  <!-- Navigation -->
+  <nav class="navbar">
+   <div class="nav-container">
+    <div class="logo">
+      <a href="#" onclick="showPage('home'); return false;">
+        <img src="img/KIMONDO_LOGO1.png" alt="Kimondo Adventures Logo" style="height: 70px;">
+      </a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span> <span></span> <span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+     <li><a onclick="showPage('home')">Home</a></li>
+     <li><a onclick="showPage('about')">About Us</a></li>
+     <li class="dropdown"><a>Tours &amp; Excursions ▾</a>
+      <div class="dropdown-content"><a onclick="showPage('tours')">All Zanzibar Tours</a> <a onclick="showPage('tours')">Island Excursions</a> <a onclick="showPage('tours')">Water Sports &amp; Adventures</a> <a onclick="showPage('tours')">Nature &amp; Wildlife</a>
+      </div></li>
+     <li class="dropdown"><a>Safaris ▾</a>
+      <div class="dropdown-content"><a onclick="showPage('safaris')">Mainland Safaris</a> <a onclick="showPage('safaris')">Popular Safari Packages</a> <a onclick="showPage('safaris')">Combination Packages</a>
+      </div></li>
+     <li><a onclick="showPage('gallery')">Gallery</a></li>
+     <li><a onclick="showPage('blog')">Blog</a></li>
+     <li><a onclick="showPage('contact')">Contact</a></li>
+     <li><button class="nav-book-btn" onclick="showPage('contact')">Book Now</button></li>
+    </ul>
+   </div>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div id="home" class="page active">
+   <section class="hero">
+    <div class="hero-content">
+     <h1 id="hero-title">Kimondo Adventures | Zanzibar Tours &amp; Mainland Safaris</h1>
+     <p class="hero-tagline" id="hero-tagline">Where Every Journey Shines Like a Star</p>
+     <p class="hero-value" id="hero-value">Local expertise, safe transport, flexible itineraries, &amp; photo/video, all under one trusted operator.</p>
+     <div class="hero-buttons"><button class="btn btn-primary" onclick="showPage('tours')">Explore Zanzibar Now</button> <button class="btn btn-secondary" onclick="showPage('contact')">Book Your Safari</button>
+     </div>
+    </div>
+   </section>
+
+   <!-- Kimondo Adventures -->
+   <section class="section">
+    <h2 class="section-title">Why Choose Kimondo Adventures</h2>
+    <div class="grid">
+     <div class="card" onclick="showPage('hidden-gems')">
+      <div class="card-image" style="background: url(img/JOZANI_FOREST_TOUR/IMG_1588.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Zanzibar Hidden Gems</h3>
+       <p class="card-text">Tours & Excursions that create unforgettable memories.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('safaris')">
+      <div class="card-image" style="background: url(img/SAFARI_BLUE_TRIP/IMG_5054.jpg) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Epic Tanzania Safaris</h3>
+       <p class="card-text">Witness wildlife in their natural habitat on the mainland.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('water-sports')">
+      <div class="card-image" style="background: url(img/JETCAR_ADDVENTURE/IMG_8599.JPG) center/cover;" ></div>
+      <div class="card-content">
+       <h3 class="card-title">Water Adventures Sports</h3>
+       <p class="card-text">Jetcar rides, snorkeling, diving & more.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('drone-photography')">
+      <div class="card-image" style="background: url(img/NUNGWI_&_KENDWA_BEACH_DAY/IMG_16682.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Drone &amp; Photography</h3>
+       <p class="card-text">Capture your adventure with professional photo and video services.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('cultural-experiences')">
+      <div class="card-image" style="background: url(img/NUNGWI_&_KENDWA_BEACH_DAY/IMG_16772.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Cultural Experiences</h3>
+       <p class="card-text">Spice tours, village visits, and authentic local encounters.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('luxury-beach-escapes')">
+      <div class="card-image" style="background: url(img/PRISON_ISLAND_TOUR/IMG_1539.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Luxury Beach Escapes</h3>
+       <p class="card-text">Private beaches, sunset cruises, and bespoke trips.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section section-alt">
+    <h2 class="section-title">Welcome to Kimondo Adventures</h2>
+    <p class="section-subtitle">Your trusted local expert in Zanzibar and Tanzania mainland safaris. We craft exceptional experiences, from turquoise island getaways to breathtaking wildlife adventures. Whether you seek relaxation, culture, or adrenaline, our team ensures every moment becomes a memory.</p>
+   </section>
+  </div>
+  
+  <!-- ABOUT US PAGE -->
+  <div id="about" class="page">
+
+  <!-- Hero Section -->
+   <section class="about-hero">
+    <div class="about-hero-overlay"></div>
+    <div class="about-hero-content">
+     <h1 class="about-hero-title">Who We Are</h1>
+     <p class="about-hero-subtitle">Discover the heart behind every journey.</p>
+    </div>
+   </section>
+   
+   <!-- Intro Section -->
+   <section class="about-intro" id="about-intro">
+    <div class="about-intro-container">
+     <div class="about-intro-text">
+      <h2 class="about-section-title">Welcome to Kimondo Adventures</h2>
+      <p class="about-intro-paragraph">Kimondo Adventures is a registered travel and tour company based in Zanzibar, specializing in authentic island experiences and unforgettable safaris across Tanzania.</p>
+      <p class="about-intro-paragraph">We combine deep local knowledge with international service standards to make your trip seamless, inspiring, and stress-free.</p>
+     </div>
+     <div class="about-intro-image">
+      <div class="about-intro-image-placeholder" style="background: url(img/DHOW_SUNSET_CRUISE/IMG_1746.JPG) center/cover;"></div>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Mission, Vision & Values -->
+   <section class="about-mvv">
+    <div class="about-mvv-container">
+     <div class="about-mvv-card">
+      <div class="about-mvv-icon">
+       <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#308231" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z" /> <path d="M2 17l10 5 10-5" /> <path d="M2 12l10 5 10-5" />
+       </svg>
+      </div>
+      <h3 class="about-mvv-title">Our Mission</h3>
+      <p class="about-mvv-text">To connect travelers with the real beauty of Zanzibar and Tanzania through unique, responsible, and well-curated adventures.</p>
+     </div>
+     <div class="about-mvv-card">
+      <div class="about-mvv-icon">
+       <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#308231" stroke-width="2"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" />
+       </svg>
+      </div>
+      <h3 class="about-mvv-title">Our Vision</h3>
+      <p class="about-mvv-text">To become the leading tour and safari brand that represents the spirit of Africa's hospitality and nature.</p>
+     </div>
+     <div class="about-mvv-card">
+      <div class="about-mvv-icon">
+       <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#308231" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" />
+       </svg>
+      </div>
+      <h3 class="about-mvv-title">Our Values</h3>
+      <p class="about-mvv-text">Professionalism & reliability, Authentic experiences, Sustainability & community impact, Customer satisfaction.</p>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Values Details -->
+   <section class="about-values-detail">
+    <div class="about-values-container">
+     <div class="about-value-card">
+      <div class="about-value-icon">
+       <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#308231" stroke-width="2"><path d="M9 11l3 3L22 4" /> <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+       </svg>
+      </div>
+      <h4 class="about-value-title">Professionalism &amp; Reliability</h4>
+      <p class="about-value-text">Licensed, insured, and committed to the highest standards of service, safety, and reliability in every aspect of our operations.</p>
+     </div>
+     <div class="about-value-card">
+      <div class="about-value-icon">
+       <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#308231" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /> <circle cx="12" cy="10" r="3" />
+       </svg>
+      </div>
+      <h4 class="about-value-title">Authentic Experiences</h4>
+      <p class="about-value-text">We showcase the real Tanzania, sharing genuine cultural experiences and hidden treasures that mass tourism overlooks.</p>
+     </div>
+     <div class="about-value-card">
+      <div class="about-value-icon">
+       <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#308231" stroke-width="2"><path d="M12 2v20M2 12h20" /> <circle cx="12" cy="12" r="10" />
+       </svg>
+      </div>
+      <h4 class="about-value-title">Sustainability</h4>
+      <p class="about-value-text">Protecting our environment and supporting local communities through responsible tourism practices and partnerships.</p>
+     </div>
+     <div class="about-value-card">
+      <div class="about-value-icon">
+       <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#308231" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" />
+       </svg>
+      </div>
+      <h4 class="about-value-title">Customer Satisfaction</h4>
+      <p class="about-value-text">Your satisfaction is our success. We go above and beyond to ensure every detail of your journey exceeds expectations.</p>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Meet the Team -->
+   <section class="about-team">
+    <h2 class="about-team-title">Meet the Team Behind the Adventure</h2>
+    <p class="about-team-subtitle">Our passionate professionals make your adventures unforgettable</p>
+    <div class="about-team-grid">
+     <div class="about-team-card">
+      <div class="about-team-photo">
+       <div class="about-team-photo-placeholder" style="background: url(img/profile_man.jpg) center/cover;"></div>
+      </div>
+      <h4 class="about-team-name">Ali ...</h4>
+      <p class="about-team-role">Safari Guide &amp; Founder</p>
+      <p class="about-team-bio">Passionate about connecting...</p>
+     </div>
+     <div class="about-team-card">
+      <div class="about-team-photo">
+       <div class="about-team-photo-placeholder" style="background: url(img/profile_woman.jpg) center/cover;"></div>
+      </div>
+      <h4 class="about-team-name">Fatuma ...</h4>
+      <p class="about-team-role">Tour Manager...</p>
+      <p class="about-team-bio">Dedicated to creating ...</p>
+     </div>
+     <div class="about-team-card">
+      <div class="about-team-photo">
+       <div class="about-team-photo-placeholder" style="background: url(img/profile_man.jpg) center/cover;"></div>
+      </div>
+      <h4 class="about-team-name">Juma ...</h4>
+      <p class="about-team-role">Cultural Heritage Expert</p>
+      <p class="about-team-bio">Bringing Zanzibar's ...</p>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Why Travelers Trust Us -->
+   <section class="about-trust">
+    <div class="about-trust-container">
+     <h2 class="about-trust-title">Why Travelers Trust Us</h2>
+     <div class="about-trust-grid">
+      <div class="about-trust-item">
+       <div class="about-trust-number">
+        10+
+       </div>
+       <p class="about-trust-label">Years of Experience</p>
+      </div>
+      <div class="about-trust-item">
+       <div class="about-trust-number">
+        500+
+       </div>
+       <p class="about-trust-label">Happy Travelers</p>
+      </div>
+      <div class="about-trust-item">
+       <div class="about-trust-number">
+        24/7
+       </div>
+       <p class="about-trust-label">Customer Support</p>
+      </div>
+      <div class="about-trust-item">
+       <div class="about-trust-number">
+        5★
+       </div>
+       <p class="about-trust-label">Average Rating</p>
+      </div>
+     </div>
+      <!--<div class="about-testimonial">
+        <p class="about-testimonial-text">"Kimondo Adventures gave us the trip of a lifetime. Their local knowledge and attention to detail made everything perfect. We can't wait to return!"</p>
+        <p class="about-testimonial-author">— Emily &amp; James, USA</p>
+     </div>>-->     
+    </div>
+   </section>
+   
+   <!-- CTA Section -->
+  
+  </div>
+  
+  <!-- TOURS & EXCURSIONS PAGE -->
+  <div id="tours" class="page">
+   <section class="section">
+    <h2 class="section-title">Zanzibar Tours &amp; Excursions</h2>
+    <p class="section-subtitle">Zanzibar is more than an island — its a paradise full of history, spice, and adventure. Discover our handpicked tours designed to show you the best of the island.</p>
+    <h3 style="font-size: 32px; color: #308231; margin-top: 60px; margin-bottom: 30px;">Island Excursions</h3>
+    <div class="grid grid-3">
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/STONE_TOWN_TOUR/IMG_1483.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Stone Town Tour</h3>
+       <p class="card-text">Explore Zanzibar’s historic heart, UNESCO World Heritage Site, rich with culture and architecture.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/PRISON_ISLAND_TOUR/IMG_1539.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Prison Island Tour</h3>
+       <p class="card-text">Short boat trip to this historic island to see giant tortoises, enjoy beach time, and learn the islands colonial history.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/SPICE_TOUR/IMG_SPICEWELCOME.GIF) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Spice Tour</h3>
+       <p class="card-text">Discover Zanzibars aromatic farms and taste fresh spices and tropical fruits.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/JOZANI_FOREST_TOUR/IMG_1587.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Jozani Forest Tour</h3>
+       <p class="card-text">Meet the rare Red Colobus monkeys and enjoy a nature walk.</p>
+      </div>
+     </div>
+    </div>
+    <h3 style="font-size: 32px; color: #308231; margin-top: 80px; margin-bottom: 30px;">Beach &amp; Relaxation</h3>
+    <div class="grid grid-3">
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/NUNGWI_&_KENDWA_BEACH_DAY/IMG_16712.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Nungwi &amp; Kendwa Beach Day</h3>
+       <p class="card-text">White sands, turquoise sea, and beach vibes.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1657.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">The Rock Restaurant Visit</h3>
+       <p class="card-text">Dine at the iconic sea restaurant.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/SANDBANK_PICNIC_NAKUPENDA/IMG_1701.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Sandbank Picnic (Nakupenda)</h3>
+       <p class="card-text">Enjoy a private paradise surrounded by the ocean.</p>
+      </div>
+     </div>
+    </div>
+    <h3 style="font-size: 32px; color: #308231; margin-top: 80px; margin-bottom: 30px;">Water Sports &amp; Adventures</h3>
+    <div class="grid grid-3">
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/JETCAR_ADDVENTURE/IMG_8599.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Jetcar Adventure</h3>
+       <p class="card-text">Drive the ultimate water vehicle for a thrilling ride!</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/JET_SKIING/IMG_1717.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Jet Skiing</h3>
+       <p class="card-text">Feel the thrill of speed and freedom as you ride across the crystal-clear waters of Zanzibar on a powerful jet ski.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/DOLPHIN_TOUR_MNEMBA_ATOLL/IMG_1734.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Dolphin Tour (Mnemba Atoll)</h3>
+       <p class="card-text">Swim alongside dolphins in their natural habitat.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/DHOW_SUNSET_CRUISE/IMG_1749.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Dhow Sunset Cruise</h3>
+       <p class="card-text">Romantic traditional boat sailing as the sun sets.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/PARASAILING/IMG_1630.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Parasailing</h3>
+       <p class="card-text">Soar high above the turquoise waters of Zanzibar and witness the islands breathtaking beauty from the sky.</p>
+      </div>
+     </div>
+    </div>
+    <h3 style="font-size: 32px; color: #308231; margin-top: 80px; margin-bottom: 30px;">Nature &amp; Wildlife</h3>
+    <div class="grid grid-3">
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/SWIMMING_TURTLES_NUNGWI/IMG_1796.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Swimming with Turtles</h3>
+       <p class="card-text">Experience one of Zanzibars most loved adventures — swimming with sea turtles in their natural lagoon.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/SAFARI_BLUE_TRIP/IMG_1854.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Safari Blue Trip</h3>
+       <p class="card-text">A full-day sea adventure with Sandbank, Snorkeling, Coral reefs,Natural blue lagoon, Big Baobab tree, Tropical fish and Seafood lunch.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/JOZANI_FOREST_TOUR/IMG_1568.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Videography &amp; Photography Sessions</h3>
+       <p class="card-text">Capture your moments professionally with our drone and camera team, perfect for couples, families, or solo travelers.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+  
+  <!-- SAFARIS PAGE -->
+  <div id="safaris" class="page">
+   <section class="section">
+    <h2 class="section-title">Mainland Safaris</h2>
+    <p class="section-subtitle">Take your adventure beyond the island! Discover the magic of Tanzania’s mainland, from the legendary Serengeti plains to the mighty Mount Kilimanjaro.</p>
+    <h3 style="font-size: 32px; color: #308231; margin-top: 60px; margin-bottom: 30px;">Popular Safari Packages</h3>
+    <div class="grid grid-3">
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/serengeti.jpg) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Serengeti National Park</h3>
+       <p class="card-text">Witness the Great Migration and Africa’s Big Five.<br><em>Duration: 3–5 Days</em></p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/tarangire.jpg) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Tarangire National Park</h3>
+       <p class="card-text">Famous for its elephants and baobab trees.<br><em>Duration: 2–3 Days</em></p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/SAFARI_BLUE_TRIP/IMG_1848.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Mikumi National Park</h3>
+       <p class="card-text">Home to part of the Big Five, lions, elephants, buffaloes, Leopards, Rhinoceroses, along with giraffes, zebras, and more across vast savannahs.<br><em>Duration: 2–3 Days</em></p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/Lake_Manyara.jpg) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">Lake Manyara National Park</h3>
+       <p class="card-text">See tree-climbing lions and flamingos in one scenic park.</p>
+      </div>
+     </div>
+    </div>
+    <h3 style="font-size: 32px; color: #308231; margin-top: 80px; margin-bottom: 30px;">Combination Packages</h3>
+    <div class="grid grid-3">
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/manyara_2.jpg) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">7 Days Safari</h3>
+       <p class="card-text">Serengeti + Ngorongoro + Manyara</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1651.JPG) center/cover;"></div>
+      <div class="card-content">
+       <h3 class="card-title">10 Days Safari</h3>
+       <p class="card-text">Zanzibar + Mainland Combo</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+  
+  <!-- GALLERY PAGE -->
+  <div id="gallery" class="page">
+   <section class="section">
+    <h2 class="section-title">Our Adventure Gallery</h2>
+    <p class="section-subtitle">Browse through our best moments, stunning beaches, smiling travelers, wildlife shots, and Aerial views of paradise.e beauty of Zanzibar and Tanzania's incredible wildlife.</p>
+    <div class="gallery-grid">
+     <div class="gallery-item gallery-beach" style="background: url(img/NUNGWI_&_KENDWA_BEACH_DAY/IMG_16112.JPG) center/cover;"></div>
+     <div class="gallery-item gallery-wildlife" style="background: url(img/Tarangire2.jpg) center/cover;"></div>
+     <div class="gallery-item gallery-adventure" style="background: url(img/JET_SKIING/IMG_1717.JPG) center/cover;"></div>
+     <div class="gallery-item gallery-aerial" style="background: url(img/DHOW_SUNSET_CRUISE/IMG_1737.JPG) center/cover;"></div>
+     <div class="gallery-item gallery-wildlife" style="background: url(img/serengeti2.jpg) center/cover;"></div>
+     <div class="gallery-item gallery-beach" style="background: url(img/SWIMMING_TURTLES_NUNGWI/IMG_1788.JPG) center/cover;"></div>
+     <div class="gallery-item gallery-adventure" style="background: url(img/DHOW_SUNSET_CRUISE/IMG_1754.JPG) center/cover;"></div>
+     <div class="gallery-item gallery-aerial" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1651.JPG) center/cover;"></div>
+     <div class="gallery-item gallery-beach" style="background: url(img/SANDBANK_PICNIC_NAKUPENDA/IMG_1704.JPG) center/cover;"></div>
+    </div>
+   </section>
+   <section class="section section-alt">
+    <h2 class="section-title">Video Highlights</h2>
+    <p class="section-subtitle">Watch immersive videos of our tours, safaris, and the incredible experiences that await you in Tanzania.</p>
+    <div class="gallery-grid">
+     <div class="gallery-item gallery-wildlife" style="background: url(img/liver.jpg) center/cover;"></div>
+     <div class="gallery-item gallery-adventure" style="background: url(img/safari.jpg) center/cover;"></div>
+     <div class="gallery-item gallery-aerial" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;"></div>
+    </div>
+   </section>
+  </div>
+  <!-- BLOG PAGE -->
+  <div id="blog" class="page">
+   <section class="section">
+    <h2 class="section-title">Travel Guide &amp; Blog</h2>
+    <p class="section-subtitle">Discover insider tips, travel inspiration, and essential information for planning your Tanzania adventure.</p>
+    <div class="blog-grid">
+     <div class="blog-card">
+      <div class="blog-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1650.JPG) center/cover;"></div>
+      <div class="blog-content">
+       <h3 class="blog-title">Top 10 Things to Do in Zanzibar</h3>
+       <p class="blog-excerpt">From pristine beaches to historic Stone Town, discover the must-see attractions and hidden gems that make Zanzibar unforgettable.</p><a href="#" class="read-more">Read More →</a>
+      </div>
+     </div>
+     <div class="blog-card">
+      <div class="blog-image" style="background: url(img/serengeti2.jpg) center/cover;"></div>
+      <div class="blog-content">
+       <h3 class="blog-title">Why Visit Serengeti National Park</h3>
+       <p class="blog-excerpt">Learn about the Great Migration, wildlife viewing opportunities, and why Serengeti should be at the top of your safari bucket list.</p><a href="#" class="read-more">Read More →</a>
+      </div>
+     </div>
+     <div class="blog-card">
+      <div class="blog-image" style="background: url(img/PARASAILING/IMG_1762.JPG) center/cover;"></div>
+      <div class="blog-content">
+       <h3 class="blog-title">Best Time to Visit Tanzania</h3>
+       <p class="blog-excerpt">Understand Tanzania's seasons, weather patterns, and optimal timing for witnessing wildlife migrations and avoiding crowds.</p><a href="#" class="read-more">Read More →</a>
+      </div>
+     </div>
+     <div class="blog-card">
+      <div class="blog-image" style="background: url(img/STONE_TOWN_TOUR/IMG_1503.JPG) center/cover;"></div>
+      <div class="blog-content">
+       <h3 class="blog-title">Cultural Tips Before Traveling</h3>
+       <p class="blog-excerpt">Essential etiquette, dress codes, greetings, and cultural practices to help you respectfully engage with local communities.</p><a href="#" class="read-more">Read More →</a>
+      </div>
+     </div>
+     <div class="blog-card">
+      <div class="blog-image" style="background: url(img/SPICE_TOUR/IMG_1565.JPG) center/cover;"></div>
+      <div class="blog-content">
+       <h3 class="blog-title">How to Combine Zanzibar + Safari</h3>
+       <p class="blog-excerpt">Plan the perfect Tanzania itinerary blending mainland wildlife adventures with relaxing island beach time for an unforgettable trip.</p><a href="#" class="read-more">Read More →</a>
+      </div>
+     </div>
+     <div class="blog-card">
+      <div class="blog-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;"></div>
+      <div class="blog-content">
+       <h3 class="blog-title">Safari Photography Tips &amp; Tricks</h3>
+       <p class="blog-excerpt">Master wildlife photography with expert advice on camera settings, timing, composition, and capturing Tanzania's stunning landscapes.</p><a href="#" class="read-more">Read More →</a>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+  <!-- ZANZIBAR HIDDEN GEMS PAGE -->
+  <div id="hidden-gems" class="page">
+   <section class="section">
+    <h2 class="section-title">Zanzibar Hidden Gems</h2>
+    <p class="section-subtitle">Discover secret beaches, off-the-beaten-path locations, and authentic island experiences that most tourists never find.</p>
+    <div class="grid grid-3">
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;">
+      </div>
+      <div class="card-content">
+       <h3 class="card-title">Paje Secret Beach</h3>
+       <p class="card-text">A secluded stretch of pristine white sand away from crowds, perfect for peaceful relaxation and stunning sunset views.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;">
+      </div>
+      <div class="card-content">
+       <h3 class="card-title">Kuza Cave Swimming</h3>
+       <p class="card-text">Swim in a natural limestone cave with crystal-clear freshwater, surrounded by ancient rock formations and local culture.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;">
+      </div>
+      <div class="card-content">
+       <h3 class="card-title">Local Village Experience</h3>
+       <p class="card-text">Visit authentic Zanzibari villages, meet local artisans, and experience daily life away from tourist areas.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;">
+      </div>
+      <div class="card-content">
+       <h3 class="card-title">Fumba Peninsula Sunset</h3>
+       <p class="card-text">Experience breathtaking sunsets from the quiet Fumba Peninsula, with views of nearby islands and traditional dhows.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;">
+
+      </div>
+      <div class="card-content">
+       <h3 class="card-title">Michamvi Beach</h3>
+       <p class="card-text">A tranquil, less-developed beach on the southeast coast with authentic local restaurants and incredible snorkeling.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;">
+ 
+      </div>
+      <div class="card-content">
+       <h3 class="card-title">Makunduchi Traditional Fishing Village</h3>
+       <p class="card-text">Witness traditional fishing methods, explore local markets, and experience authentic coastal Swahili culture.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;">
+      </div>
+      <div class="card-content">
+       <h3 class="card-title">Mnemba Island Snorkeling</h3>
+       <p class="card-text">Snorkel around exclusive Mnemba Atoll, home to vibrant coral reefs, tropical fish, and sea turtles.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;">
+       
+      </div>
+      <div class="card-content">
+       <h3 class="card-title">Mtoni Palace Ruins</h3>
+       <p class="card-text">Explore the atmospheric ruins of a 19th-century sultan's palace with fascinating history and ocean views.</p>
+      </div>
+     </div>
+     <div class="card" onclick="showPage('contact')">
+      <div class="card-image" style="background: url(img/THE_ROCK_RESTAURANT_VISIT/IMG_1636.JPG) center/cover;">
+       
+      </div>
+      <div class="card-content">
+       <h3 class="card-title">Nungwi Night Market</h3>
+       <p class="card-text">Experience local life at the vibrant night market with street food, crafts, and authentic Zanzibari atmosphere.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section section-alt">
+    <h2 class="section-title">Why Explore Hidden Gems?</h2>
+    <div class="about-grid">
+     <div class="about-item">
+      <h3>Authentic Experiences</h3>
+      <p>Connect with real Zanzibari culture and communities, experiencing the island as locals do rather than following tourist crowds.</p>
+     </div>
+     <div class="about-item">
+      <h3>Exclusive Access</h3>
+      <p>Our local knowledge and community relationships give you access to places and experiences unavailable through standard tours.</p>
+     </div>
+     <div class="about-item">
+      <h3>Peaceful Settings</h3>
+      <p>Enjoy Zanzibar's natural beauty in tranquil, uncrowded locations where you can truly relax and immerse yourself in paradise.</p>
+     </div>
+    </div>
+   </section>
+  </div>
+  <!-- CONTACT PAGE -->
+  <div id="contact" class="page">
+   <section class="section">
+    <h2 class="section-title">Book Your Adventure Today!</h2>
+    <p class="section-subtitle">Ready to explore Tanzania? Fill out the form below and we'll create a personalized itinerary just for you.</p>
+    <div class="contact-info">
+     <div class="contact-item">
+      <h3>Location</h3>
+      <p>Zanzibar, Tanzania</p>
+     </div>
+     <div class="contact-item">
+      <h3>WhatsApp</h3>
+      <p><a href="https://wa.me/255762040425?text=Hello%20Kimondo%20Adventures!%20I'd%20like%20some%20advice%20about%20your%20tours,%20safaris,%20or%20bookings." target="_blank" rel="noopener noreferrer" id="whatsapp-link">+255 762 040 425</a></p>
+     </div>
+     <div class="contact-item">
+      <h3>Email</h3>
+      <p><a href="mailto:info@kimondoadventures.go.tz" id="email-link">info@kimondoadventures.go.tz</a></p>
+     </div>
+     <div class="contact-item">
+      <h3>Website</h3>
+      <p><a href="https://www.kimondoadventures.go.tz" target="_blank" rel="noopener noreferrer" id="website-link">www.kimondoadventures.go.tz</a></p>
+     </div>
+    </div>
+    <div class="contact-form">
+     <div class="success-message" id="successMessage">
+      Thank you! Your booking request has been sent. We'll contact you shortly via WhatsApp or email.
+     </div>
+     <form id="bookingForm">
+      <div class="form-group"><label for="name">Full Name *</label> <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group"><label for="email">Email Address *</label> <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group"><label for="whatsapp">WhatsApp Number *</label> <input type="tel" id="whatsapp" name="whatsapp" required>
+      </div>
+      <div class="form-group"><label for="destination">Preferred Destination *</label> <select id="destination" name="destination" required> <option value="">Select a destination...</option> <option value="zanzibar-beaches">Zanzibar Beaches</option> <option value="stone-town">Stone Town Tour</option> <option value="spice-tour">Spice Farm Tour</option> <option value="water-sports">Water Sports</option> <option value="serengeti">Serengeti Safari</option> <option value="ngorongoro">Ngorongoro Crater</option> <option value="combo">Zanzibar + Safari Combo</option> <option value="custom">Custom Itinerary</option> </select>
+      </div>
+      <div class="form-group"><label for="dates">Travel Dates</label> <input type="text" id="dates" name="dates" placeholder="e.g., June 15-22, 2025">
+      </div>
+      <div class="form-group"><label for="people">Number of People *</label> <input type="number" id="people" name="people" min="1" required>
+      </div>
+      <div class="form-group"><label for="notes">Additional Notes or Special Requests</label> <textarea id="notes" name="notes" placeholder="Tell us about your interests, budget, special occasions, or any questions..."></textarea>
+      </div><button type="submit" class="submit-btn" id="submitBtn">Book Now</button>
+     </form>
+    </div>
+   </section>
+   <section class="section section-alt">
+    <h2 class="section-title">Connect With Us</h2>
+    <p class="section-subtitle">Follow our adventures on social media for daily inspiration, travel tips, and exclusive offers.</p>
+    <div class="social-links" style="justify-content: center; margin-top: 30px;"><a href="https://instagram.com/kimondo.adventures" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-green">
+      <svg width="40" height="40" viewbox="0 0 24 24" fill="currentColor">
+       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+      </svg></a> <a href="https://facebook.com/kimondo.adventures" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-green">
+      <svg width="40" height="40" viewbox="0 0 24 24" fill="currentColor">
+       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+      </svg></a> <a href="https://tiktok.com/@kimondo.adventures" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-green">
+      <svg width="40" height="40" viewbox="0 0 24 24" fill="currentColor">
+       <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+      </svg></a> <a href="https://twitter.com/kimondo_adv" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-green">
+      <svg width="40" height="40" viewbox="0 0 24 24" fill="currentColor">
+       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg></a> <a href="https://wa.me/255762040425?text=Hello%20Kimondo%20Adventures!%20I'd%20like%20some%20advice%20about%20your%20tours,%20safaris,%20or%20bookings." target="_blank" rel="noopener noreferrer" class="social-icon social-icon-green">
+      <svg width="40" height="40" viewbox="0 0 24 24" fill="currentColor">
+       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+      </svg></a>
+    </div>
+   </section>
+  </div>
+  
+  <!-- FOOTER -->
+  <footer class="footer">
+   <div class="footer-content">
+    <div class="footer-section">
+    <!-- <h3 id="footer-logo">Kimondo Adventures</h3> -->
+     <p id="footer-description">Experience authentic Zanzibar tours and mainland safaris with local expertise, creating memories that shine like stars.</p>
+     <div class="social-links"><a href="https://instagram.com/kimondo.adventures" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-white">
+       <svg width="36" height="36" viewbox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+       </svg></a> <a href="https://facebook.com/kimondo.adventures" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-white">
+       <svg width="36" height="36" viewbox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+       </svg></a> <a href="https://tiktok.com/@kimondo.adventures" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-white">
+       <svg width="36" height="36" viewbox="0 0 24 24" fill="currentColor">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+       </svg></a> <a href="https://twitter.com/kimondo_adv" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-white">
+       <svg width="36" height="36" viewbox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+       </svg></a> <a href="https://wa.me/255762040425?text=Hello%20Kimondo%20Adventures!%20I'd%20like%20some%20advice%20about%20your%20tours,%20safaris,%20or%20bookings." target="_blank" rel="noopener noreferrer" class="social-icon social-icon-white">
+       <svg width="36" height="36" viewbox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+       </svg></a>
+     </div>
+    </div>
+    <div class="footer-section">
+     <h3>Quick Links</h3><a onclick="showPage('home')">Home</a> <a onclick="showPage('about')">About Us</a> <a onclick="showPage('tours')">Zanzibar Tours</a> <a onclick="showPage('safaris')">Mainland Safaris</a> <a onclick="showPage('gallery')">Gallery</a>
+    </div>
+    <div class="footer-section">
+     <h3>Destinations</h3><a onclick="showPage('tours')">Stone Town</a> <a onclick="showPage('tours')">Prison Island</a> <a onclick="showPage('tours')">Spice Tours</a> <a onclick="showPage('safaris')">Serengeti</a> <a onclick="showPage('safaris')">Ngorongoro</a>
+    </div>
+    <div class="footer-section">
+     <h3>Contact Info</h3>
+     <p>Zanzibar, Tanzania</p>
+     <p><a href="https://wa.me/255762040425?text=Hello%20Kimondo%20Adventures!%20I'd%20like%20some%20advice%20about%20your%20tours,%20safaris,%20or%20bookings." target="_blank" rel="noopener noreferrer" id="footer-whatsapp">+255 762 040 425</a></p>
+     <p><a href="mailto:info@kimondoadventures.go.tz" id="footer-email">info@kimondoadventures.go.tz</a></p>
+     <p><a href="https://www.kimondoadventures.go.tz" target="_blank" rel="noopener noreferrer" id="footer-website">www.kimondoadventures.go.tz</a></p>
+    </div>
+   </div>
+   <div class="footer-bottom">
+    <p>© 2025 Kimondo Adventures. All Rights Reserved.</p>
+    <div class="footer-links"><a href="#" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a> <a href="#" target="_blank" rel="noopener noreferrer">Privacy Policy</a> <a href="#" target="_blank" rel="noopener noreferrer">Refund Policy</a>
+    </div>
+   </div>
+  </footer>
+  <script>
+    const defaultConfig = {
+      company_name: "Kimondo Adventures",
+      hero_title: "Kimondo Adventures | Zanzibar Tours & Mainland Safaris",
+      hero_tagline: "Where Every Journey Shines Like a Star",
+      hero_value: "Local expertise, flexible itineraries, safe transport & professional photo/video",
+      phone_number: "+255 762 040 425",
+      email_address: "info@kimondoadventures.go.tz",
+      footer_text: "Experience authentic Zanzibar tours and mainland safaris with local expertise",
+      background_color: "#F5E6CC",
+      primary_color: "#308231",
+      secondary_color: "#F7931E",
+      text_color: "#1A1A1A",
+      surface_color: "#ffffff"
+    };
+
+    async function onConfigChange(config) {
+      const companyName = config.company_name || defaultConfig.company_name;
+      const heroTitle = config.hero_title || defaultConfig.hero_title;
+      const heroTagline = config.hero_tagline || defaultConfig.hero_tagline;
+      const heroValue = config.hero_value || defaultConfig.hero_value;
+      const phoneNumber = config.phone_number || defaultConfig.phone_number;
+      const emailAddress = config.email_address || defaultConfig.email_address;
+      const websiteUrl = config.website_url || defaultConfig.website_url;
+      const footerText = config.footer_text || defaultConfig.footer_text;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+
+      document.getElementById('logo-text').textContent = companyName;
+      document.getElementById('footer-logo').textContent = companyName;
+      document.getElementById('hero-title').textContent = heroTitle;
+      document.getElementById('hero-tagline').textContent = heroTagline;
+      document.getElementById('hero-value').textContent = heroValue;
+      document.getElementById('footer-description').textContent = footerText;
+
+      const whatsappLinks = document.querySelectorAll('#whatsapp-link, #footer-whatsapp');
+      whatsappLinks.forEach(link => {
+        link.textContent = phoneNumber;
+        link.href = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=Hello%20Kimondo%20Adventures!%20I'd%20like%20some%20advice%20about%20your%20tours,%20safaris,%20or%20bookings.`;
+      });
+
+      const emailLinks = document.querySelectorAll('#email-link, #footer-email');
+      emailLinks.forEach(link => {
+        link.textContent = emailAddress;
+        link.href = `mailto:${emailAddress}`;
+      });
+
+      const websiteLinks = document.querySelectorAll('#website-link, #footer-website');
+      websiteLinks.forEach(link => {
+        link.textContent = websiteUrl;
+        link.href = `https://${websiteUrl}`;
+      });
+
+      const sections = document.querySelectorAll('.section-alt');
+      sections.forEach(section => {
+        section.style.backgroundColor = backgroundColor;
+      });
+
+      const titles = document.querySelectorAll('.section-title, .card-title, .about-item h3, .contact-item h3');
+      titles.forEach(title => {
+        title.style.color = primaryColor;
+      });
+
+      const primaryButtons = document.querySelectorAll('.btn-primary');
+      primaryButtons.forEach(btn => {
+        btn.style.backgroundColor = primaryColor;
+      });
+
+      const secondaryButtons = document.querySelectorAll('.btn-secondary, .submit-btn');
+      secondaryButtons.forEach(btn => {
+        btn.style.backgroundColor = secondaryColor;
+      });
+
+      const cards = document.querySelectorAll('.card, .contact-form, .contact-item, .blog-card');
+      cards.forEach(card => {
+        card.style.backgroundColor = surfaceColor;
+      });
+
+      document.body.style.color = textColor;
+    }
+
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo(0, 0);
+      
+      // Close mobile menu when navigating
+      const navLinks = document.getElementById('navLinks');
+      const hamburger = document.getElementById('hamburger');
+      if (navLinks && hamburger) {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+      }
+    }
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      // Desktop and Mobile dropdown toggle
+      const dropdowns = document.querySelectorAll('.dropdown');
+      const dropdownLinks = document.querySelectorAll('.dropdown > a');
+      
+      dropdownLinks.forEach(dropdownLink => {
+        dropdownLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const parent = dropdownLink.parentElement;
+          const wasOpen = parent.classList.contains('open');
+          
+          // Close all other dropdowns
+          dropdowns.forEach(dropdown => {
+            if (dropdown !== parent) {
+              dropdown.classList.remove('open');
+              dropdown.classList.remove('active');
+            }
+          });
+          
+          // Toggle current dropdown
+          if (wasOpen) {
+            parent.classList.remove('open');
+            parent.classList.remove('active');
+          } else {
+            parent.classList.add('open');
+            if (window.innerWidth <= 968) {
+              parent.classList.add('active');
+            }
+          }
+        });
+      });
+
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', (e) => {
+        const clickedInsideDropdown = Array.from(dropdowns).some(dropdown => 
+          dropdown.contains(e.target)
+        );
+        
+        if (!clickedInsideDropdown) {
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('open');
+            dropdown.classList.remove('active');
+          });
+        }
+        
+        // Close mobile menu when clicking outside
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Close dropdowns when clicking dropdown items
+      const dropdownItems = document.querySelectorAll('.dropdown-content a');
+      dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('open');
+            dropdown.classList.remove('active');
+          });
+        });
+      });
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('submitBtn');
+      const successMessage = document.getElementById('successMessage');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      setTimeout(() => {
+        successMessage.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Book Now';
+        this.reset();
+
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 5000);
+      }, 1000);
+    });
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["company_name", config.company_name || defaultConfig.company_name],
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          ["hero_tagline", config.hero_tagline || defaultConfig.hero_tagline],
+          ["hero_value", config.hero_value || defaultConfig.hero_value],
+          ["phone_number", config.phone_number || defaultConfig.phone_number],
+          ["email_address", config.email_address || defaultConfig.email_address],
+          ["website_url", config.website_url || defaultConfig.website_url],
+          ["footer_text", config.footer_text || defaultConfig.footer_text]
+        ])
+      });
+    }
+  </script>
+</body>
+</html>
